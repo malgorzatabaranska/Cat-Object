@@ -1,44 +1,39 @@
-#Napisz klasę reprezentującą kota, każdy kot ma
-#imie
-#swoje ulubione zabawki
-#zabawki których nie znosi
-#ponadto potafi:
-#przywitać się i przedstawić
-#powiedziec jakie są jego ulubione/ nielubiane zabawki i ile ich jest
-#polubić napotkaną zabawke
-#obrazić się na jakąś 
-#obrazić się na jakąś zabwke, którą dotąd lubił
-#kot do nowych zabawek podchodzi z ufnoscia . Na liście lubianych i nielubianych żaden element sie nie powtarza
 
 
-
+#Create Cat object
 class Cat(object): 
 
-    def __init__(self, name, mood =0, fun = 0, hungry = 0):
+#create constructo, atrybiuts : mood, fun, hungry == 0
+    def __init__(self, name, mood =0, fun = 0, hungry = 0): 
         self.name= name
         self.mood = mood
         self.fun = fun
         self.hungry = hungry
+
 
     def __str__(self):
         rep1 = self.name
 
         return rep1, 
 
+#method pass time increase mood, hungry 
     def pass_time(self):
         self.mood += 5
         self.hungry +=5
+
 
     def introduce(self):
         print("Cześć jestem", self.name)
         self.pass_time()
 
+#mehton play if is use, call pass time and, decrease fun 
     def play(self):
         print("Mruuu")
         self.pass_time()
         self.fun -= 5
         if self.mood <= 0:
             self.mood == 0
+
 
     def eat(self):
         print(
@@ -81,7 +76,7 @@ class Cat(object):
 
         return m
         
-
+#method asking for like/unlike toys 
     def ask_for_toys(self, like, basket):
         if len(like) == 0:
             print("Nie znoszę wszystkich zabawek!")
@@ -95,6 +90,7 @@ class Cat(object):
 
 
 
+#create class for Toys, with basket and 3 atributs inside
 class Toys():
     basket = ["piłeczka", "kłębek wełny", "gumowy kurczak"]
     like = []
@@ -107,6 +103,7 @@ class Toys():
 
         return rep1
 
+#method choose random atributs from basket 
     def love(self):
         import random
         for toys in random.sample(Toys.basket, random.randint(1 ,len(Toys.basket))):
@@ -115,14 +112,16 @@ class Toys():
                 Toys.basket.remove(toys)
             except ValueError: 
                 print("Uwielbiam wszystkie swoje zabawki")
-    
+
+#method for add new toys to basekt 
     def add_toy(self):
         new_toy_name = input("Jaką zabawke chcesz oddać? : ")
         if new_toy_name != "":
             Toys.like.append(new_toy_name)
         else: 
             print("Trudno będę sie bawił tym co mam")
-        
+
+
     def replace(self):
         import random
         for x in random.sample(Toys.like, random.randint(1, len(Toys.like))):
